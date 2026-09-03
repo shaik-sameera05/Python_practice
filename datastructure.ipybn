@@ -1,0 +1,17 @@
+def two_sum(nums: list[int], target: int) -> list[int]:
+    # This dictionary maps a number to its index
+    seen_numbers = {}
+    
+    for current_index, current_num in enumerate(nums):
+        # Calculate what number we need to reach the target
+        complement = target - current_num
+        
+        # Check if the needed number has already been seen
+        if complement in seen_numbers:
+            # If found, return the index of the complement and the current index
+            return [seen_numbers[complement], current_index]
+        
+        # Otherwise, store the current number and its index in our map
+        seen_numbers[current_num] = current_index
+        
+    return [] # Return empty list if no solution is found (though prompt assumes 1 solution)
